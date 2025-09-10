@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prod.Cupid - Premium Beats & Music Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Stripe Payment Integration -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Prod.Cupid</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#beats" class="nav-link">Beats</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Prod.Cupid Beats & Music Production</h1>
+            <p class="hero-subtitle">Love-inspired beats and professional music services that make hearts skip a beat</p>
+            <div class="hero-buttons">
+                <a href="#beats" class="btn btn-primary">Browse Beats</a>
+                <a href="#services" class="btn btn-secondary">View Services</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="music-visualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beats Section -->
+    <section id="beats" class="beats-section">
+        <div class="container">
+            <h2 class="section-title">Latest Beats</h2>
+            <p class="section-subtitle">High-quality instrumentals ready for your next project</p>
+            
+            <div class="beats-grid">
+                <div class="beat-card">
+                    <div class="beat-cover">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="beat-info">
+                        <h3>Love Trap Beat</h3>
+                        <p>Romantic trap instrumental with emotional depth</p>
+                        <div class="beat-controls">
+                            <audio controls class="audio-player">
+                                <source src="#" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="beat-price">
+                            <span class="price">$29.99</span>
+                            <button class="btn btn-small">Purchase</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="beat-card">
+                    <div class="beat-cover">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="beat-info">
+                        <h3>Romantic Lo-Fi</h3>
+                        <p>Dreamy lo-fi beat perfect for love songs</p>
+                        <div class="beat-controls">
+                            <audio controls class="audio-player">
+                                <source src="#" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="beat-price">
+                            <span class="price">$24.99</span>
+                            <button class="btn btn-small">Purchase</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="beat-card">
+                    <div class="beat-cover">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="beat-info">
+                        <h3>Love Pop Beat</h3>
+                        <p>Uplifting pop instrumental for love anthems</p>
+                        <div class="beat-controls">
+                            <audio controls class="audio-player">
+                                <source src="#" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="beat-price">
+                            <span class="price">$34.99</span>
+                            <button class="btn btn-small">Purchase</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="beat-card">
+                    <div class="beat-cover">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="beat-info">
+                        <h3>Heartbreak R&B</h3>
+                        <p>Emotional R&B beat for soulful love songs</p>
+                        <div class="beat-controls">
+                            <audio controls class="audio-player">
+                                <source src="#" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="beat-price">
+                            <span class="price">$39.99</span>
+                            <button class="btn btn-small">Purchase</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Music Services</h2>
+            <p class="section-subtitle">Professional music production services tailored to your needs</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Custom Beat Production</h3>
+                    <p>Personalized beats created specifically for your project with unlimited revisions until you're satisfied.</p>
+                    <ul class="service-features">
+                        <li>Unlimited revisions</li>
+                        <li>High-quality stems</li>
+                        <li>Commercial rights included</li>
+                        <li>Fast turnaround</li>
+                    </ul>
+                    <div class="service-price">Starting at $199</div>
+                    <button class="btn btn-primary">Get Quote</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Mixing & Mastering</h3>
+                    <p>Professional mixing and mastering services to make your tracks sound radio-ready and polished.</p>
+                    <ul class="service-features">
+                        <li>Professional mixing</li>
+                        <li>Mastering for all platforms</li>
+                        <li>Multiple format delivery</li>
+                        <li>Revision rounds included</li>
+                    </ul>
+                    <div class="service-price">Starting at $149</div>
+                    <button class="btn btn-primary">Get Quote</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Full Song Production</h3>
+                    <p>Complete song production from concept to final master, including arrangement, recording, and mixing.</p>
+                    <ul class="service-features">
+                        <li>Full song arrangement</li>
+                        <li>Professional recording</li>
+                        <li>Vocal production</li>
+                        <li>Final mastering</li>
+                    </ul>
+                    <div class="service-price">Starting at $499</div>
+                    <button class="btn btn-primary">Get Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Prod.Cupid</h2>
+                    <p>As Prod.Cupid, I specialize in creating love-inspired beats and romantic instrumentals that capture the essence of emotion in music. With over 5 years of experience, I craft beats that make hearts skip and souls connect through sound.</p>
+                    <p>I'm passionate about helping artists express their deepest emotions through music. Whether you need a romantic beat for your love song, mixing services for your latest track, or full song production, I'm here to deliver beats that touch hearts and exceed expectations.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Beats Sold</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="studio-placeholder">
+                        <i class="fas fa-music"></i>
+                        <p>Studio Photo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to start your next project? Let's discuss your needs</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@prodcupid.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Los Angeles, CA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="">Select Service</option>
+                            <option value="custom-beat">Custom Beat Production</option>
+                            <option value="mixing">Mixing & Mastering</option>
+                            <option value="full-production">Full Song Production</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Prod.Cupid</span>
+                    </div>
+                    <p>Love-inspired beats and professional music production services for artists worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#beats">Beats</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-soundcloud"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Prod.Cupid. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>

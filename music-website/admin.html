@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prod.Cupid Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <i class="fas fa-heart"></i>
+                <h1>Prod.Cupid Admin</h1>
+                <p>Access your personal music store</p>
+            </div>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div id="login-error" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+        <!-- Admin Navigation -->
+        <nav class="admin-navbar">
+            <div class="admin-nav-container">
+                <div class="admin-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Prod.Cupid Admin</span>
+                </div>
+                <div class="admin-nav-links">
+                    <a href="#dashboard" class="admin-nav-link active" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <a href="#beats" class="admin-nav-link" data-section="beats">
+                        <i class="fas fa-music"></i> Manage Beats
+                    </a>
+                    <a href="#orders" class="admin-nav-link" data-section="orders">
+                        <i class="fas fa-shopping-cart"></i> Orders
+                    </a>
+                    <a href="#analytics" class="admin-nav-link" data-section="analytics">
+                        <i class="fas fa-chart-bar"></i> Analytics
+                    </a>
+                    <a href="#settings" class="admin-nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i> Settings
+                    </a>
+                    <button id="logout-btn" class="btn btn-secondary">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" class="admin-section active">
+            <div class="container">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-beats">0</h3>
+                            <p>Total Beats</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-revenue">$0</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-orders">0</h3>
+                            <p>Total Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-customers">0</h3>
+                            <p>Total Customers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beats Management Section -->
+        <section id="beats-section" class="admin-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Manage Beats</h2>
+                    <button id="add-beat-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Beat
+                    </button>
+                </div>
+                
+                <!-- Add/Edit Beat Form -->
+                <div id="beat-form-container" class="beat-form-container" style="display: none;">
+                    <form id="beat-form" class="beat-form">
+                        <h3 id="form-title">Add New Beat</h3>
+                        <div class="form-row">
+                        <div class="form-group">
+                            <label for="beat-title">Beat Title</label>
+                            <div class="title-input-container">
+                                <input type="text" id="beat-title" name="title" required>
+                                <button type="button" id="ai-title-generator" class="btn-ai-generate" title="Generate AI Title Suggestions">
+                                    <i class="fas fa-magic"></i>
+                                </button>
+                            </div>
+                            <div id="ai-title-suggestions" class="ai-suggestions-container" style="display: none;">
+                                <div class="ai-suggestions-header">
+                                    <i class="fas fa-robot"></i>
+                                    <span>AI Title Suggestions</span>
+                                    <button type="button" id="close-ai-suggestions" class="btn-close-suggestions">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div id="ai-suggestions-list" class="ai-suggestions-list">
+                                    <!-- AI suggestions will be loaded here -->
+                                </div>
+                                <div class="ai-loading" id="ai-loading" style="display: none;">
+                                    <div class="ai-spinner"></div>
+                                    <span>Generating creative titles...</span>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <label for="beat-price">Price ($)</label>
+                                <input type="number" id="beat-price" name="price" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="beat-description">Description</label>
+                            <textarea id="beat-description" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="beat-genre">Genre</label>
+                                <select id="beat-genre" name="genre" required>
+                                    <option value="">Select Genre</option>
+                                    <option value="Trap">Trap</option>
+                                    <option value="Hip-Hop">Hip-Hop</option>
+                                    <option value="R&B">R&B</option>
+                                    <option value="Pop">Pop</option>
+                                    <option value="Lo-Fi">Lo-Fi</option>
+                                    <option value="Drill">Drill</option>
+                                    <option value="Afrobeat">Afrobeat</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="beat-bpm">BPM</label>
+                                <input type="number" id="beat-bpm" name="bpm" min="60" max="200">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="beat-audio">Audio File</label>
+                            <input type="file" id="beat-audio" name="audio" accept="audio/*" required>
+                            <div class="file-info">Supported formats: MP3, WAV, M4A</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="beat-cover">Cover Art (Optional)</label>
+                            <input type="file" id="beat-cover" name="cover" accept="image/*">
+                            <div class="file-info">Recommended: 500x500px, JPG/PNG</div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Beat</button>
+                            <button type="button" id="cancel-beat-btn" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Beats List -->
+                <div class="beats-list">
+                    <div class="beats-header">
+                        <h3>Your Beats</h3>
+                        <div class="search-box">
+                            <input type="text" id="beat-search" placeholder="Search beats...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div id="beats-grid" class="beats-grid-admin">
+                        <!-- Beats will be loaded here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders-section" class="admin-section">
+            <div class="container">
+                <h2>Order Management</h2>
+                <div class="orders-filters">
+                    <select id="order-status-filter">
+                        <option value="">All Orders</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div id="orders-list" class="orders-list">
+                    <!-- Orders will be loaded here dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics-section" class="admin-section">
+            <div class="container">
+                <h2>Analytics & Reports</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Sales This Month</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Sales chart will be displayed here</p>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Top Selling Beats</h3>
+                        <div id="top-beats-list" class="top-beats-list">
+                            <!-- Top beats will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings-section" class="admin-section">
+            <div class="container">
+                <h2>Site Settings</h2>
+                
+                <!-- Hero Image Management -->
+                <div class="settings-card">
+                    <h3>Hero Section Image</h3>
+                    <p>Upload a custom image for your home page hero section. This will replace the default music visualizer.</p>
+                    
+                    <div class="hero-image-preview">
+                        <div id="current-hero-preview" class="hero-preview-container">
+                            <div class="hero-preview-placeholder">
+                                <i class="fas fa-image"></i>
+                                <p>No hero image uploaded</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="hero-image-form" class="hero-image-form">
+                        <div class="form-group">
+                            <label for="hero-image-upload">Upload Hero Image</label>
+                            <input type="file" id="hero-image-upload" name="heroImage" accept="image/*" required>
+                            <div class="file-info">Recommended: 1920x1080px, JPG/PNG/WebP. Max size: 5MB</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hero-image-title">Hero Title (Optional)</label>
+                            <input type="text" id="hero-image-title" name="heroTitle" placeholder="Custom title for hero section">
+                        </div>
+                        <div class="form-group">
+                            <label for="hero-image-subtitle">Hero Subtitle (Optional)</label>
+                            <input type="text" id="hero-image-subtitle" name="heroSubtitle" placeholder="Custom subtitle for hero section">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> Upload Hero Image
+                            </button>
+                            <button type="button" id="remove-hero-image" class="btn btn-secondary">
+                                <i class="fas fa-trash"></i> Remove Current Image
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Site Information -->
+                <div class="settings-card">
+                    <h3>Site Information</h3>
+                    <form id="site-info-form" class="site-info-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="site-name">Site Name</label>
+                                <input type="text" id="site-name" name="siteName" value="Prod.Cupid" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="site-tagline">Site Tagline</label>
+                                <input type="text" id="site-tagline" name="siteTagline" value="Premium Beats & Music Services" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Contact Email</label>
+                            <input type="email" id="contact-email" name="contactEmail" value="contact@prodcupid.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-location">Location</label>
+                            <input type="text" id="contact-location" name="contactLocation" value="Los Angeles, CA">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Site Information
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+</html>

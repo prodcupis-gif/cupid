@@ -1,0 +1,34 @@
+{
+  "name": "prodcupid-music-store",
+  "version": "1.0.0",
+  "description": "Professional music store with AI-powered features",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "echo 'Deploy to your hosting service'"
+  },
+  "keywords": [
+    "music",
+    "beats",
+    "ecommerce",
+    "ai",
+    "openai",
+    "stripe"
+  ],
+  "author": "Prod.Cupid",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/prodcupid-music-store.git"
+  },
+  "homepage": "https://yourdomain.com"
+}
